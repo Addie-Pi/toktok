@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { Video } from '../types'
+import VideoCard from '../components/VideoCard';
+import NoResult from '../components/NoResult';
+
 
 interface IProps{
   videos: Video[]
@@ -8,8 +11,14 @@ interface IProps{
 const Home = ({ videos }: IProps) => {
   console.log("videos ", videos)
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
+    <h1 className="flex flex-col gap-10 videos h-full">
+      {videos.length ? (
+        videos.map((video: Video)=>(
+          <VideoCard post={video} key={video._id}/>
+        ))
+      ) : (
+        <NoResult text={'No Videos'}/>
+      )}
     </h1>
    )
 }
