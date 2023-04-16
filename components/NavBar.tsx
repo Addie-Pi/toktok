@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,6 +11,8 @@ import Logo from '../utils/toktok-logo.png'
 
 
 const NavBar = () => {
+
+  const [user, setUser] = useState(false)
   return (
     <div className='w-full flex justify-between item-center border-b-2 border-gray-200 py-2 px-4'>
       <Link href="/">
@@ -18,6 +20,17 @@ const NavBar = () => {
           <Image className="cursor-pointer" src={Logo} alt="TokTok" layout="responsive"/>
         </div>
       </Link>
+      <div>SEARCH</div>
+      <div>
+        {user ? (
+          <div>Logged In</div>
+        ) : (
+          <GoogleLogin
+            onSuccess={(response)=>{console.log('response ', response)}}
+            onError={()=>{console.log('Error')}}
+          />
+        ) }
+      </div>
     </div>
   )
 }
