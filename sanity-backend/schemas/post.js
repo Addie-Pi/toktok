@@ -1,5 +1,6 @@
 export default {
   name: 'post',
+  // title is the name on the sanity studio
   title: 'Post',
   type: 'document',
   fields: [

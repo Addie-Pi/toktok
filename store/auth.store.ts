@@ -6,7 +6,7 @@ import { persist } from 'zustand/middleware'
 // it's going to have instant return
 const authStore = (set:any) => ({
   // initial value
-  userProfile:null, 
+  userProfile: null, 
 
   // action function
   addUser: (user:any) => set({userProfile:user}),

@@ -25,7 +25,6 @@ const NavBar = () => {
             className="cursor-pointer"
             src={Logo}
             alt="TokTok"
-            layout="responsive"
           />
         </div>
       </Link>
