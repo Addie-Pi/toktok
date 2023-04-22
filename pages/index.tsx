@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Video } from '../types'
 import VideoCard from '../components/VideoCard';
 import NoResult from '../components/NoResult';
-
+import { BASE_URL } from '@/utils';
 
 interface IProps{
   videos: Video[]
@@ -10,6 +10,8 @@ interface IProps{
 
 const Home = ({ videos }: IProps) => {
   console.log("videos ", videos)
+  
+
   return (
     <h1 className="flex flex-col gap-10 videos h-full">
       {videos.length ? (
@@ -25,7 +27,8 @@ const Home = ({ videos }: IProps) => {
 
 // Next.js will pre-render this page on each request using the data returned by getServerSideProps
 export const getServerSideProps = async() => {
-  const { data } = await axios.get(`http://localhost:3000/api/post`)
+  
+  const { data } = await axios.get(`${BASE_URL}/api/post`)
   
   return {
     props:{

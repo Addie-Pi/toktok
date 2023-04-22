@@ -10,6 +10,8 @@ import { client } from '../utils/client'
 
 import { topics } from '@/utils/constants'
 
+import { BASE_URL } from '@/utils'
+
 
 const Upload = () => {
 
@@ -22,6 +24,7 @@ const Upload = () => {
   const [savingPost, setSavingPost] = useState(false)
 
   const { userProfile }: { userProfile : any} = userAuthStore()
+  
 
   const uploadVideo = async(e:any) => {
     // console.log('e', e.target.files[0])
@@ -74,7 +77,7 @@ const Upload = () => {
         topic: category,
       }
 
-      await axios.post('http://localhost:3000/api/post', post)
+      await axios.post(`${BASE_URL}/api/post`, post)
      
       router.push('/')
     }
