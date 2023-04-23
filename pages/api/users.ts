@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { client } from '@/utils/client'
-import { allPostsQuery } from '@/utils/queries'
+import { allUsersQuery } from '@/utils/queries'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   // res.status(200).json({ name: 'Response success' })
   if (req.method === 'GET') {
-    const data = await client.fetch(allPostsQuery())
+    const data = await client.fetch(allUsersQuery())
 
     if(data){
       res.status(200).json(data)

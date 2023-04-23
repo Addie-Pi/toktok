@@ -23,7 +23,7 @@ const Upload = () => {
   const [category, setCcategory] = useState(topics[0].name)
   const [savingPost, setSavingPost] = useState(false)
 
-  const { userProfile }: { userProfile : any} = userAuthStore()
+  const { userProfile }: any = userAuthStore()
   
 
   const uploadVideo = async(e:any) => {
