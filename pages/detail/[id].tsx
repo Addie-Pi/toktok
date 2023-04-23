@@ -24,6 +24,8 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
   const [post, setPost] = useState(postDetails)
   const [playing, setPlaying] = useState(false)
   const [isVideoMuted, setIsVideoMuted] = useState(false)
+  const [comment, setComment] = useState('')
+  const [isPostingcomment, setIsPostingcomment] = useState(false)
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const router = useRouter()
@@ -56,6 +58,25 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
       })
 
       setPost({...post, likes: data.likes})
+    }
+  }
+
+  const addcomment = async(e: React.FormEvent) => {
+    
+    e.preventDefault()
+
+    if(userProfile && comment){
+      console.log('comment111 ', comment)
+      setIsPostingcomment(true)
+      
+      const {data} = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id, 
+        comment: comment
+      })
+
+      setPost({...post, comments:data.comments})
+      setComment('')
+      setIsPostingcomment(false)
     }
 
   }
@@ -173,7 +194,13 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
             )}
           </div>
           {/* comment section */}
-          <Comments />
+          <Comments 
+            comment={comment}
+            setComment={setComment}
+            addComment={addcomment}
+            comments={post.comments}
+            isPostingComment={isPostingcomment}
+          />
         </div>
       </div>
     </div>
