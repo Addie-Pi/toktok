@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   // res.status(200).json({ name: 'Response success' })
   if (req.method === 'GET') {
-    console.log('req.query ', req.query)
+    // console.log('req.query ', req.query)
     const {id}:any = req.query;
     const query = postDetailQuery(id)
 
@@ -18,7 +18,7 @@ export default async function handler(
 
     res.status(200).json(data[0])
   }else if(req.method === 'PUT'){
-    console.log('req', req)
+    // console.log('req', req)
     const { comment, userId} = req.body
     const {id}:any = req.query
 

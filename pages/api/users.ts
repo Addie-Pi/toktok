@@ -12,6 +12,7 @@ export default async function handler(
     const data = await client.fetch(allUsersQuery())
 
     if(data){
+      console.log('data - users', data)
       res.status(200).json(data)
     }else{
       res.json([])

@@ -41,7 +41,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
           {/* user image */}
           <div className="md:w-16 md:h-16 w-10 h-10">
-            <Link href="/">
+            <Link href={`/profile/${post.postedBy._id}`}>
               <>
                 <Image
                   width={50}
@@ -56,7 +56,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 
           {/* user name */}
           <div>
-            <Link href="/">
+            <Link href={`/profile/${post.postedBy._id}`}>
               <div className="flex item-center gap-2">
                 <p className="flex gap-2 item-center md:text-md font-bold text-primary">
                   {post.postedBy.userName}
@@ -81,7 +81,6 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           }}
           className="rounded-3xl"
         >
-          
           <Link href={`/detail/${post._id}`}>
             <video
               ref={videoRef}
@@ -91,7 +90,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             ></video>
           </Link>
           {isHover && (
-            <div className='absolute bottom-6 cursor-pointer left-10 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] p-3'>
+            <div className="absolute bottom-6 cursor-pointer left-10 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] p-3">
               {playing ? (
                 <button onClick={onVideoPresss}>
                   <BsFillPauseFill className="text-black text-2xl lg:text-4xl" />

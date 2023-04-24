@@ -23,7 +23,6 @@ const SuggestedAccounts = () => {
       <div>
         {allUsers.slice(0, 6).map((user: IUser) => (
           <Link
-            
             href={`/profile/${user._id}`}
             key={user._id}
           >

@@ -45,11 +45,12 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
     // add post is to make sure when we enter another video, we would like to rerun the useEffect
     if (post && videoRef?.current) {
       videoRef.current.muted = isVideoMuted
+      
     }
   }, [post, isVideoMuted])
 
   const handleLike = async(like:boolean) => {
-    console.log('post', post)
+    // console.log('post', post)
     if(userProfile){
       const { data } = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id, 
