@@ -9,7 +9,7 @@ interface IProps{
 }
 
 const Home = ({ videos }: IProps) => {
-  console.log("videos ", videos)
+  // console.log("videos ", videos)
   
 
   return (
@@ -26,14 +26,26 @@ const Home = ({ videos }: IProps) => {
 }
 
 // Next.js will pre-render this page on each request using the data returned by getServerSideProps
-export const getServerSideProps = async() => {
+export const getServerSideProps = async({
+  query: {topic}
+}:{
+  query: {topic:string}
+}) => {
+  let response = null
+
+  if(topic){
+    response = await axios.get(`${BASE_URL}/api/discover/${topic}`)
+
+  }else{
+    response = await axios.get(`${BASE_URL}/api/post`)
+
+  }
   
-  const { data } = await axios.get(`${BASE_URL}/api/post`)
   
   return {
-    props:{
-      videos: data
-    }
+    props: {
+      videos: response.data,
+    },
   }
 }
 
