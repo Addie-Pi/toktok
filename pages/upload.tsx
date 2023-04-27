@@ -86,8 +86,8 @@ const Upload = () => {
   }
 
   return (
-    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center">
-      <div className="bg-white rounded-lg xl:h-[80vh] w-[60%] flex gap-6 flex-wrap xl:justify-between justify-center items-center p-14 pt-6">
+    <div className="flex w-full h-full absolute left-0 top-[80px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center">
+      <div className="bg-white rounded-lg xl:h-[80vh] w-[60%] flex gap-3 flex-wrap xl:justify-evenly justify-center items-center p-14 pt-6">
         <div>
           <div>
             <p className="text-2xl font-bold">Upload Video</p>
@@ -96,7 +96,8 @@ const Upload = () => {
             </p>
           </div>
           {/* upload video */}
-          <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none mt-10 w-[260px] h-[460px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100">
+          <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center 
+            outline-none mt-10 w-[300px] h-[500px] p-6 cursor-pointer hover:border-red-300 hover:bg-gray-100">
             {isLoading ? (
               <p>Uploading</p>
             ) : (
@@ -107,7 +108,7 @@ const Upload = () => {
                       src={videoAsset.url}
                       loop
                       controls
-                      className="rounded-xl h-[450px] mt-16 bg-black"
+                      className="rounded-xl h-[450px]  bg-black"
                     ></video>
                   </div>
                 ) : (

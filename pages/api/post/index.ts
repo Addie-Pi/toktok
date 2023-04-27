@@ -12,13 +12,14 @@ export default async function handler(
 ) {
   // res.status(200).json({ name: 'Response success' })
   if(req.method === 'GET'){
+    // console.log('666 ')
     const query = allPostsQuery()
     const data = await client.fetch(query)
-    console.log('data from DB ', data)
+    // console.log('data from DB 123 ', data)
     res.status(200).json(data)
   }else if(req.method === 'POST'){
     const post =  req.body
-    console.log('2 ', post)
+    
     client.create(post).then(() => res.status(201).json('Video Created'))
   }
 }

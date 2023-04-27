@@ -22,7 +22,7 @@ interface IComment{
   _key: string, 
   postedBy: {
     _ref: string, 
-    // _id: string
+    _id: string
   }
 
 }
@@ -31,16 +31,19 @@ interface IComment{
 const Comments = ({ comment, setComment, addComment, comments, isPostingComment }: IProps) => {
  
   const {userProfile, allUsers} = userAuthStore()
+
+  console.log('comments UIII', comments)
  
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]">
       <div className="overflow-scroll lg:h-[475px]">
-        {comments?.length ? (
-          comments.map((item, index) => (
+        {comments?.length > 0 ? (
+          comments.map((item: IComment, index: number) => (
             <>
-              {allUsers.map(
+              {allUsers?.map(
                 (user: IUser) =>
-                  user._id === item.postedBy._ref && (
+                  user._id ===
+                  (item.postedBy._ref || item.postedBy._id) && (
                     <div className="p-2 items-center" key={index}>
                       <Link href={`/profile/${user._id}`}>
                         <div className="flex items-start gap-3">
@@ -64,7 +67,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                           </div>
                         </div>
                       </Link>
-                      
+
                       {/* display the comment */}
                       <div>
                         <p>{item.comment}</p>

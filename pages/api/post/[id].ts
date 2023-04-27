@@ -13,14 +13,14 @@ export default async function handler(
     // console.log('req.query ', req.query)
     const {id}:any = req.query;
     const query = postDetailQuery(id)
-
     const data = await client.fetch(query)
+
 
     res.status(200).json(data[0])
   }else if(req.method === 'PUT'){
     // console.log('req', req)
     const { comment, userId} = req.body
-    const {id}:any = req.query
+    const { id }:any = req.query
 
     const data = await client
       .patch(id)
@@ -37,6 +37,7 @@ export default async function handler(
       ])
       .commit()
 
+    // console.log('pppppp ', data)
     res.status(200).json(data)
   }
 }

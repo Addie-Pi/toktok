@@ -19,7 +19,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const onVideoPresss = () => {
-    console.log('55',videoRef)
+    
     if(playing){
       videoRef.current?.pause()
       setPlaying(false)
