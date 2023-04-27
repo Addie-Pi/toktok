@@ -31,7 +31,7 @@ export default async function handler(
           _key: uuid(),
           postedBy:{
             _type:'postedBy', 
-            _ref: userId
+            _ref: userId, 
           }
         },
       ])
