@@ -19,7 +19,7 @@ const SideBar = () => {
   return (
     <div>
       <div
-        className="block xl:hidded m-2 ml-4 mt-3 text-xl"
+        className="block xl:hidden m-2 ml-4 mt-3 text-xl"
         onClick={() => {
           setShowSidebar((preshowSidebar) => {
             return !preshowSidebar
